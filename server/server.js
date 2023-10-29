@@ -10,7 +10,7 @@ const routes = require('./routes'); //this is what's different --do we still nee
 
 const PORT = process.env.PORT || 3001; 
 const app = express();
-const server = new ApolloServer({
+const server = new ApolloServer({ //typeDefs and resolvers define the schema that our ApolloServer uses to answer queries made to /Graphql
   typeDefs,
   resolvers,
 });
@@ -24,7 +24,7 @@ const server = new ApolloServer({
 //   app.use(express.static(path.join(__dirname, '../client/build')));
 // }
 
-app.use(routes); //this is what's different --do we still need this?
+app.use(routes); //this is what's different --do we still need this? I don't think so since we just have one route-one point for all queries/mutations - /graphql
 
 
 // db.once('open', () => {
@@ -46,7 +46,8 @@ const startApolloServer = async () => {
     });
   }
   
-  app.use('/graphql', expressMiddleware(server));
+  //any client requests that begin with /graphql will be handled by Apollo Server
+  app.use('/graphql', expressMiddleware(server)); //we have just one entry point - one API route handled by our Apollo Server
 
   db.once('open', () => {
     app.listen(PORT, () => {
