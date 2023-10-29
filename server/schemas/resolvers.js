@@ -41,7 +41,7 @@ const resolvers = {
         },
         // save a book to a user's `savedBooks` field by adding it to the set (to prevent duplicates)
         // user comes from `req.user` created in the auth middleware function
-        saveBook: async (parent, { authors, description, title, bookId, link }, context) => {
+        saveBook: async (parent, { authors, description, bookId, image, link, title }, context) => {
             try {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id }, //find by the user._id - include user._id in the body
@@ -51,7 +51,7 @@ const resolvers = {
                         runValidators: true
                     }
                 );
-                return updatedUser;
+                return updatedUser.populate('savedBooks');
             } catch (err) {
                 throw AuthentificationError;
             }
@@ -63,7 +63,7 @@ const resolvers = {
                     { _id: context.user._id }, //find by the user._id - include user._id in the body
                     { $pull: { savedBooks: bookId } }, //pull from savedBooks array, by its bookId
                     { new: true }
-                );
+                )
             }
             throw AuthentificationError;
         }
