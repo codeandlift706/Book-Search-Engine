@@ -59,7 +59,7 @@ const resolvers = {
             if (context.user) {
                 return User.findOneAndUpdate(
                     { _id: context.user._id }, //find by the user._id - include user._id in the body
-                    { $pull: { savedBooks: { bookId: bookId } } }, //pull from savedBooks array, by its bookId
+                    { $pull: { savedBooks: { bookId: ID } } }, //pull from savedBooks array, by its bookId
                     { new: true }
                 );
             }
