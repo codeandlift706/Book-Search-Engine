@@ -30,20 +30,20 @@
 
 const typeDefs = `
 type User {
-_id: ID
-username: String
-email: String
-bookCount: 
-savedBooks: [Book]
+    _id: ID
+    username: String
+    email: String
+    bookCount: 
+    savedBooks: [Book]!
 }
 
 type Book {
-bookId: ID!
-authors: [String]
-description: String
-title: String
-IMage: String
-Link: String
+    bookId: ID
+    authors: [String]!
+    description: String
+    title: String
+    image: String
+    link: String
 }
 
 type Auth {
@@ -52,14 +52,14 @@ type Auth {
 }
 
 type Query {
-me: User
+    me: User
 }
 
 type Mutation {
-addUser(username: String!, email: String!, password: String!): Auth
-login(email: String!, password: String!): Auth
-saveBook(savedBooks: [Book], description: String!, title: String!, bookId: ID!, link: String!): User
-removeBook(bookId: ID!): User
+    addUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
+    saveBook(authors: [String]!, description: String!, title: String!, bookId: ID!, image: String!, link: String!): User
+    removeBook(bookId: ID!): User
 }
 
 `
