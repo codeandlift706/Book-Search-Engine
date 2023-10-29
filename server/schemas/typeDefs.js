@@ -40,7 +40,7 @@ type User {
 type Book {
     authors: [String]!
     description: String
-    bookId: ID
+    bookId: ID!
     image: String
     link: String
     title: String
