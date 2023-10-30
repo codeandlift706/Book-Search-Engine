@@ -11,8 +11,8 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client'
 
-import { GET_ME } from '../../utils/queries';
-import { REMOVE_BOOK } from '../../utils/mutations';
+import { QUERY_ME } from '../utils/queries';
+import { REMOVE_BOOK } from '../utils/mutations';
 
 import {
   Container,
