@@ -33,8 +33,8 @@ type User {
     _id: ID
     username: String
     email: String
-    savedBooks: [Book]!
-    bookCount: ???
+    savedBooks: [Book]
+    bookCount: Int
 }
 
 type Book {

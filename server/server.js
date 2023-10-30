@@ -2,11 +2,11 @@ const express = require('express');
 const { ApolloServer } = require('@apollo/server');
 const { expressMiddleware } = require('@apollo/server/express4');
 const path = require('path');
-
+const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
-const routes = require('./routes'); //this is what's different --do we still need this?
+// const routes = require('./routes'); //this is what's different --do we still need this?
 
 const PORT = process.env.PORT || 3001; 
 const app = express();
@@ -24,7 +24,7 @@ const server = new ApolloServer({ //typeDefs and resolvers define the schema tha
 //   app.use(express.static(path.join(__dirname, '../client/build')));
 // }
 
-app.use(routes); //this is what's different --do we still need this? I don't think so since we just have one route-one point for all queries/mutations - /graphql
+// app.use(routes); //this is what's different --do we still need this? I don't think so since we just have one route-one point for all queries/mutations - /graphql
 
 
 // db.once('open', () => {
@@ -47,7 +47,7 @@ const startApolloServer = async () => {
   }
   
   //any client requests that begin with /graphql will be handled by Apollo Server
-  app.use('/graphql', expressMiddleware(server)); //we have just one entry point - one API route handled by our Apollo Server
+  app.use('/graphql', expressMiddleware(server, {context: authMiddleware })); //we have just one entry point - one API route handled by our Apollo Server
 
   db.once('open', () => {
     app.listen(PORT, () => {

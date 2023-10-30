@@ -6,17 +6,17 @@ const resolvers = {
         // ????????? find user by id or by username
         me: async (parent, args, context) => {
             if (context.user) {
-                return User.findOne({
-                    $or: [{ _id: context.user._id }, { username: context.user.username }],
-                }).populate('savedBooks');  //populate associated savedBooks list
+                return await User.findOne(
+                    { _id: context.user._id }
+                ).populate('savedBooks');  //populate associated savedBooks list
             }
             throw AuthentificationError;
         },
     },
     //create user, server signs a token, and sends it back to the client
     Mutation: {
-        addUser: async (parent, { username, email, password }) => {
-            const user = await User.create({ username, email, password });
+        addUser: async (parent, args) => {
+            const user = await User.create(args);
             const token = signToken(user); //create token with the user's args/info
 
             return { token, user };

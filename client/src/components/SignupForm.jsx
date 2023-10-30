@@ -1,6 +1,6 @@
 // SignupForm.jsx: Replace the addUser() functionality imported from the API file with the ADD_USER mutation functionality.
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
 import { useMutation } from '@apollo/client';
@@ -17,8 +17,14 @@ const SignupForm = () => {
   // set state for alert
   const [showAlert, setShowAlert] = useState(false);
 
-  const [addUser, { error, data }] = useMutation(ADD_USER); //-----------------Added
-
+  const [addUser, { error }] = useMutation(ADD_USER); //-----------------Added
+  useEffect(() => {
+    if (error) {
+      setShowAlert(true);
+    } else {
+      setShowAlert(false);
+    }
+  }, [error])
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -49,7 +55,6 @@ const SignupForm = () => {
       console.log(data);
 
       Auth.login(data.addUser.token);
-      setValidation(true);
       //-----------------Added
 
       // if (!response.ok) {
@@ -61,7 +66,7 @@ const SignupForm = () => {
     } catch (err) {
       console.error(err);
       console.log("Can't sign up")
-      setShowAlert(true);
+      // setShowAlert(true);
     }
 
     setUserFormData({ //reset the fields
