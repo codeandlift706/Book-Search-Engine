@@ -3,7 +3,6 @@ const { signToken, AuthentificationError } = require('../utils/auth'); //import 
 
 const resolvers = {
     Query: {
-        // ????????? find user by id or by username
         me: async (parent, args, context) => {
             if (context.user) {
                 return await User.findOne(
@@ -41,11 +40,11 @@ const resolvers = {
         },
         // save a book to a user's `savedBooks` field by adding it to the set (to prevent duplicates)
         // user comes from `req.user` created in the auth middleware function
-        saveBook: async (parent, { authors, description, bookId, image, link, title }, context) => {
+        saveBook: async (parent, args, context) => {
             try {
                 const updatedUser = await User.findOneAndUpdate(
                     { _id: context.user._id }, //find by the user._id - include user._id in the body
-                    { $addToSet: { savedBooks: { authors, description, bookId, image, link, title } } }, //pushes to savedBooks array these properties
+                    { $addToSet: { savedBooks: args } }, //pushes to savedBooks array these properties
                     {
                         new: true,
                         runValidators: true

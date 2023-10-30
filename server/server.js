@@ -6,31 +6,12 @@ const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
-// const routes = require('./routes'); //this is what's different --do we still need this?
-
 const PORT = process.env.PORT || 3001; 
 const app = express();
 const server = new ApolloServer({ //typeDefs and resolvers define the schema that our ApolloServer uses to answer queries made to /Graphql
   typeDefs,
   resolvers,
 });
-
-
-// app.use(express.urlencoded({ extended: true }));
-// app.use(express.json());
-
-// if we're in production, serve client/build as static assets
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, '../client/build')));
-// }
-
-// app.use(routes); //this is what's different --do we still need this? I don't think so since we just have one route-one point for all queries/mutations - /graphql
-
-
-// db.once('open', () => {
-//   app.listen(PORT, () => console.log(`🌍 Now listening on localhost:${PORT}`));
-// });
-
 
 const startApolloServer = async () => {
   await server.start();
