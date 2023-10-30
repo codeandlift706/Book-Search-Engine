@@ -20,8 +20,8 @@ import {
 import Auth from '../utils/auth';
 
 
-import { saveBook, searchGoogleBooks } from '../utils/API'; //we don't want to use this
-import { saveBookIds, getSavedBookIds } from '../utils/localStorage'; //we don't want to use this
+import { saveBook, searchGoogleBooks } from '../utils/API'; 
+import { saveBookIds, getSavedBookIds } from '../utils/localStorage'; 
 
 
 const SearchBooks = () => {
@@ -29,14 +29,10 @@ const SearchBooks = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);
   // create state for holding our search field data
   const [searchInput, setSearchInput] = useState('');
-
   // create state to hold saved bookId values
   const [savedBookIds, setSavedBookIds] = useState(getSavedBookIds());
 
-
-  const [saveBook, { error }] = useMutation(SAVE_BOOK);
-
-
+  const [saveBook, { error }] = useMutation(SAVE_BOOK); //added useMutation
 
 
   // set up useEffect hook to save `savedBookIds` list to localStorage on component unmount
@@ -93,9 +89,6 @@ const SearchBooks = () => {
     //   return false;
     // }
 
-    if (book.bookdId === bookId) {
-      
-    }
 
     try {
       const { data } = await saveBook({
