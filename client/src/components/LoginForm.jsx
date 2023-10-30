@@ -1,18 +1,20 @@
 // see SignupForm.js for comments
+// LoginForm.jsx: Replace the loginUser() functionality imported from the API file with the LOGIN_USER mutation functionality.
+
 import { useState } from 'react';
 import { Form, Button, Alert } from 'react-bootstrap';
 
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 
-import { loginUser } from '../utils/API';
+// import { loginUser } from '../utils/API';
 import Auth from '../utils/auth';
 
 const LoginForm = (props) => {
   const [userFormData, setUserFormData] = useState({ email: '', password: '' });
-  const [validated] = useState(false);
+  const [validated, setValidation] = useState(false); //added setValidation
   const [showAlert, setShowAlert] = useState(false);
-  const [login, { error, data }] = useMutation(LOGIN_USER);
+  const [login, { error, data }] = useMutation(LOGIN_USER); //-----------------Added
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -28,13 +30,17 @@ const LoginForm = (props) => {
       event.preventDefault();
       event.stopPropagation();
     }
-
     try {
+      //-----------------Added
       const { data } = await login({
         variables: {...userFormData},
       });
 
       Auth.login(data.login.token);
+      setValidation(true);
+
+//-----------------Added
+
       // if (!response.ok) {
       //   throw new Error('something went wrong!');
       // const { token, user } = await response.json();
