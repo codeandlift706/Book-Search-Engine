@@ -33,11 +33,8 @@ module.exports = {
       req.user = data;
     } catch {
       console.log('Invalid token');
-      // return res.status(400).json({ message: 'invalid token!' });
     }
 
-    // send to next endpoint
-    // next(); //where is this next endpoint?
     return req; //return the req object so it can be passed to resolver as "context"
   },
   signToken: function ({ username, email, _id }) {
