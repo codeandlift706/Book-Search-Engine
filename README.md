@@ -12,6 +12,7 @@
 
 ## Description
 The purpose of this project is to set up an Apollo Server to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API.
+The deployed application can be found here:
 
 ## Installation
 VS Code to clone the starter code (https://github.com/coding-boot-camp/solid-broccoli)  and to code the front/back end of the application. GibHub for version control. In addition to the starter code, install the following on the client and server level:
@@ -23,9 +24,19 @@ https://www.npmjs.com/package/graphql.
 
 
 ## Usage
-This can be used when users want to create an application to search and save searched books.
-For a quick scan of the code to put together this application, view the following:
+This can be used when clients want to create an application to search and save searched books.
 
+
+View a screenshot of the homepage, not logged in:
+![Screenshot](assets/HomePage.png)
+View a screenshot of the signup form:
+![Screenshot](assets/SignUp.png)
+View a screenshot of searched books after entering a title in the search bar:
+![Screenshot](assets/SearchBook.png)
+View a screenshot of the saved book in “See Your Books” tab:
+![Screenshot](assets/SavedBook.png)
+View a screenshot of the “See Your Books” tab after removing the book:
+![Screenshot](assets/removedBook.png)
 
 ## License
 This project is under the MIT license.
