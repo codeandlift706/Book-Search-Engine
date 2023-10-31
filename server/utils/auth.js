@@ -24,7 +24,7 @@ module.exports = {
     }
 
     if (!token) {
-      return res.status(400).json({ message: 'You have no token!' });
+      return req;
     }
 
     // verify token and get user data out of it
@@ -33,11 +33,11 @@ module.exports = {
       req.user = data;
     } catch {
       console.log('Invalid token');
-      return res.status(400).json({ message: 'invalid token!' });
+      // return res.status(400).json({ message: 'invalid token!' });
     }
 
     // send to next endpoint
-    next(); //where is this next endpoint?
+    // next(); //where is this next endpoint?
     return req; //return the req object so it can be passed to resolver as "context"
   },
   signToken: function ({ username, email, _id }) {

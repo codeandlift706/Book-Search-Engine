@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Book } = require('../models');
 const { signToken, AuthentificationError } = require('../utils/auth'); //import signToken from auth
 
 const resolvers = {
@@ -58,9 +58,9 @@ const resolvers = {
 
         removeBook: async (parent, { bookId }, context) => {
             if (context.user) {
-                return User.findOneAndUpdate(
+                return await User.findOneAndUpdate(
                     { _id: context.user._id }, //find by the user._id - include user._id in the body
-                    { $pull: { savedBooks: bookId } }, //pull from savedBooks array, by its bookId
+                    { $pull: { savedBooks: {bookId } }}, //pull from savedBooks array, by its bookId
                     { new: true }
                 )
             }
