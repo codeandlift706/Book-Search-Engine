@@ -1,14 +1,3 @@
-// Remove the useEffect() Hook that sets the state for UserData.
-
-// Instead, use the useQuery() Hook to execute the GET_ME query on load and save it to a variable named userData.
-
-// Use the useMutation() Hook to execute the REMOVE_BOOK mutation in the handleDeleteBook() function instead of the deleteBook() function that's imported from API file. (Make sure you keep the removeBookId() function in place!)
-
-
-
-
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { useQuery, useMutation } from '@apollo/client'
 
 import { QUERY_ME } from '../utils/queries';
@@ -23,29 +12,20 @@ import {
 } from 'react-bootstrap';
 
 import Auth from '../utils/auth';
-import { getMe, deleteBook } from '../utils/API'; //we don't want to use this
-import { removeBookId } from '../utils/localStorage'; //we don't want to use this
+// import { getMe, deleteBook } from '../utils/API'; 
+import { removeBookId } from '../utils/localStorage'; 
 
 
 const SavedBooks = () => {
-  // const [userData, setUserData] = useState({});
 
-  // use this to determine if `useEffect()` hook needs to run again
-  // const userDataLength = Object.keys(userData).length;
-
-  const { loading, data } = useQuery(QUERY_ME); //added useMutation
+  const { loading, data } = useQuery(QUERY_ME); //query to view your own saved books
 
   const [removeBook, { error }] = useMutation(REMOVE_BOOK);
 
-  const userData = data?.me || {};
-
-  //   getUserData();
-  // }, [userDataLength]);
+  const userData = data?.me || {}; //check if there's a data object and me property for saved books
 
   // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
-
-
 
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
@@ -55,7 +35,7 @@ const SavedBooks = () => {
 
     try {
       const { data } = await removeBook({
-        variables: { bookId }
+        variables: { bookId } //remove book by its id
       })
 
 
