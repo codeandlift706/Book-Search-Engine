@@ -12,7 +12,7 @@
 
 ## Description
 The purpose of this project is to set up an Apollo Server to use GraphQL queries and mutations to fetch and modify data, replacing the existing RESTful API.
-The deployed application can be found here:
+The deployed application can be found here: https://book-search-engine-1lzm.onrender.com/.
 
 ## Installation
 VS Code to clone the starter code (https://github.com/coding-boot-camp/solid-broccoli)  and to code the front/back end of the application. GibHub for version control. In addition to the starter code, install the following on the client and server level:
@@ -47,7 +47,7 @@ To complete the README section, the source is: https://coding-boot-camp.github.i
 To complete the markdown for the README, the source is: https://www.markdownguide.org/basic-syntax/
 
 ## Tests
-To test the functionality of the MERN-Book-Search-Engine, users can clone this repo, run ‘npm install’ in the command line, and start the application’s server with “npm run develop” in the command line. Click on the generated link in the terminal to view the application and perform the actions: sign up, login, search for a book, and save the book. Users can also test the functionality with the deployed application here:
+To test the functionality of the MERN-Book-Search-Engine, users can clone this repo, run ‘npm install’ in the command line, and start the application’s server with “npm run develop” in the command line. Click on the generated link in the terminal to view the application and perform the actions: sign up, login, search for a book, and save the book. Users can also test the functionality with the deployed application here: https://book-search-engine-1lzm.onrender.com/. 
 
 ## Questions
 The link to my Github Profile here: https://github.com/codeandlift706.
