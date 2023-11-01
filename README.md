@@ -44,7 +44,8 @@ This project is under the MIT license.
 ## Contribution
 The assignment provided instructions for the backend setup (resolvers, typeDefs, server file) and for the frontend adjustments to be made (queries). The coding in the server.js file and auth file (imports, boilerplate middleware), the coding in the typeDefs file (graphql syntax), the resolvers (queries syntax) -all the additions- are credited to the curriculum taught in the UCI coding boot camp. I also received assistance from the TA and tutor for additions made to the auth/server files, as well as the debugging made to the queries.
 To complete the README section, the source is: https://coding-boot-camp.github.io/full-stack/github/professional-readme-guide.
-To complete the markdown for the README, the source is: https://www.markdownguide.org/basic-syntax/
+To complete the markdown for the README, the source is: https://www.markdownguide.org/basic-syntax/.
+The deploy the application using Render, I referenced: https://www.youtube.com/watch?v=RMNWJ-_8SUU&ab_channel=KerwinTang.
 
 ## Tests
 To test the functionality of the MERN-Book-Search-Engine, users can clone this repo, run ‘npm install’ in the command line, and start the application’s server with “npm run develop” in the command line. Click on the generated link in the terminal to view the application and perform the actions: sign up, login, search for a book, and save the book. Users can also test the functionality with the deployed application here: https://book-search-engine-1lzm.onrender.com/. 
